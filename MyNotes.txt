@@ -1,0 +1,34 @@
+The Complete TALL Stack Tutorial - FROM NOTHING TO PROD (Tailwind, Alpine, Laravel, Livewire & More)
+Youtube Tutorial by: Josh Cirri Channel
+
+0:25, 1:00, 1:11, 1:30, 1:41, 1:54, 2:05, 2:20, 2:46, 3:05
+
+https://wireui.dev/
+https://laravel.com/docs/10.x/starter-kits
+https://fly.io/
+https://postmarkapp.com/    Email Service
+
+
+ composer create-project laravel/laravel sendnotes
+php artisan migrate
+composer require laravel/breeze --dev
+php artisan breeze:install
+# Livewire (Volt Class API) with Alpine 
+composer require wireui/wireui
+php artisan vendor:publish --tag="wireui.config"
+
+php artisan make:mode Note -m
+php artisan make:volt notes/show-notes --class
+php artisan make:migration add_recipient_to_notes_table —table=notes
+php artisan make:seeder NoteSeeder
+php artisan db:seed
+php artisan make:volt notes/create-note --class
+php artisan make:policy NotePolicy --model=Note
+php artisan make:volt notes/edit-note --class
+php artisan make:factory NoteFactory --model=Note
+php artisan make:volt HeartReact --class
+php artisan make:command SendScheduledNotes
+php artisan app:send-schedule-notes  # execute command via artisan command
+php artisan make:job SendEmail
+Note! In the app\Console\Kernel’s schedule(), configure the schedule to run the ‘send-schedule-notes’
+
